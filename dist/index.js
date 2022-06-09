@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _app = _interopRequireDefault(require("./src/libs/app"));
+var _app = _interopRequireDefault(require("./app"));
 
 _app["default"].set("port", process.env.PORT || 5000);
 
