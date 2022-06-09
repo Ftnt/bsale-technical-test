@@ -1,4 +1,4 @@
-import app from "./libs/app";
+import app from "./src/libs/app";
 
 app.set("port", process.env.PORT || 3000);
 
