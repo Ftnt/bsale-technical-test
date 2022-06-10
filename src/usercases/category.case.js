@@ -11,7 +11,23 @@ Category.caseGetAllCategory = () => {
       if (res.length) {
         return resolve(res);
       }
-      return reject(new Error("Not found"));
+      return reject({ code: 404, error: "Not found" });
+    });
+  });
+};
+
+Category.caseGetProductbyCategory = (idCategory) => {
+  return new Promise((resolve, reject) => {
+    let sql = `SELECT * FROM product WHERE category = '${idCategory}'`;
+    pool.query(sql, (err, res) => {
+      console.log(res.length);
+      if (err) {
+        return reject(err);
+      }
+      if (res.length) {
+        return resolve(res);
+      }
+      return reject({ code: 404, error: "Not found" });
     });
   });
 };

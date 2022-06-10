@@ -9,9 +9,28 @@ export const getAllCategory = async (req, res) => {
       data: allCategory,
     });
   } catch (error) {
-    return res.status(500).json({
+    return res.status(error.code).json({
       status: "error",
-      message: error,
+      ...error,
+    });
+  }
+};
+
+export const getProductbyCategory = async (req, res) => {
+  try {
+    const idCategory = req.params.id;
+    const productbyCategory = await Category.caseGetProductbyCategory(
+      idCategory
+    );
+    return res.status(200).json({
+      status: "success",
+      message: `All Category`,
+      data: productbyCategory,
+    });
+  } catch (error) {
+    return res.status(error.code).json({
+      status: "error",
+      ...error,
     });
   }
 };
