@@ -24,7 +24,33 @@ _category["default"].caseGetAllCategory = function () {
         return resolve(res);
       }
 
-      return reject(new Error("Not found"));
+      return reject({
+        code: 404,
+        error: "Not found"
+      });
+    });
+  });
+};
+
+_category["default"].caseGetProductbyCategory = function (idCategory) {
+  return new Promise(function (resolve, reject) {
+    var sql = "SELECT * FROM product WHERE category = '".concat(idCategory, "'");
+
+    _db["default"].query(sql, function (err, res) {
+      console.log(res.length);
+
+      if (err) {
+        return reject(err);
+      }
+
+      if (res.length) {
+        return resolve(res);
+      }
+
+      return reject({
+        code: 404,
+        error: "Not found"
+      });
     });
   });
 };

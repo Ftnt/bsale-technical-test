@@ -11,5 +11,6 @@ var _categoryController = require("../controllers/category.controller.js");
 
 var routes = (0, _express.Router)();
 routes.get("/", _categoryController.getAllCategory);
+routes.get("/:id", _categoryController.getProductbyCategory);
 var _default = routes;
 exports["default"] = _default;
