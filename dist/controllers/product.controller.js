@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getProductbyCategory = exports.getAllCategory = void 0;
+exports.getProductById = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -13,91 +13,50 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _categoryCase = _interopRequireDefault(require("../usercases/category.case.js"));
+var _productCase = _interopRequireDefault(require("../usercases/product.case.js"));
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-var getAllCategory = /*#__PURE__*/function () {
+var getProductById = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var allCategory;
+    var idProduct, product;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            _context.next = 3;
-            return _categoryCase["default"].caseGetAllCategory();
+            idProduct = req.params.id;
+            _context.next = 4;
+            return _productCase["default"].caseGetProduct(idProduct);
 
-          case 3:
-            allCategory = _context.sent;
+          case 4:
+            product = _context.sent;
             return _context.abrupt("return", res.status(200).json({
               status: "success",
-              message: "All Category",
-              data: allCategory
+              message: "Product",
+              data: product
             }));
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             return _context.abrupt("return", res.status(_context.t0.code).json(_objectSpread({
               status: "error"
             }, _context.t0)));
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
-  return function getAllCategory(_x, _x2) {
+  return function getProductById(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
 
-exports.getAllCategory = getAllCategory;
-
-var getProductbyCategory = /*#__PURE__*/function () {
-  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var idCategory, productbyCategory;
-    return _regenerator["default"].wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.prev = 0;
-            idCategory = req.params.id;
-            _context2.next = 4;
-            return _categoryCase["default"].caseGetProductbyCategory(idCategory);
-
-          case 4:
-            productbyCategory = _context2.sent;
-            return _context2.abrupt("return", res.status(200).json({
-              status: "success",
-              message: "Product by Category",
-              data: productbyCategory
-            }));
-
-          case 8:
-            _context2.prev = 8;
-            _context2.t0 = _context2["catch"](0);
-            return _context2.abrupt("return", res.status(_context2.t0.code).json(_objectSpread({
-              status: "error"
-            }, _context2.t0)));
-
-          case 11:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2, null, [[0, 8]]);
-  }));
-
-  return function getProductbyCategory(_x3, _x4) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-exports.getProductbyCategory = getProductbyCategory;
+exports.getProductById = getProductById;
