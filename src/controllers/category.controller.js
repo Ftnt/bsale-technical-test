@@ -24,7 +24,7 @@ export const getProductbyCategory = async (req, res) => {
     );
     return res.status(200).json({
       status: "success",
-      message: `All Category`,
+      message: `Product by Category`,
       data: productbyCategory,
     });
   } catch (error) {
