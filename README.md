@@ -1,7 +1,7 @@
 # bsale-technical-test Back\
 
-NodeJs API con Expres - MySQL
-Se trabaja con Vite
+NodeJs API con Expres - MySQL\
+Se trabaja con Vite\
 urlDeploy : https://bsale-tech.herokuapp.com/api/
 
 ## Instalacion
