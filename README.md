@@ -1,4 +1,4 @@
-# bsale-technical-test Back\
+# bsale-technical-test Back
 
 NodeJs API con Expres - MySQL\
 Se trabaja con Vite\
