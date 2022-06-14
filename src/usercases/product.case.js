@@ -16,9 +16,10 @@ Product.caseGetProduct = (idProduct) => {
   });
 };
 
-Product.caseGetAllProduct = () => {
+Product.caseGetSearchProduct = (name) => {
   return new Promise((resolve, reject) => {
-    let sql = `SELECT * FROM product`;
+    let sql = `SELECT * FROM product where name like '%${name}%'`;
+    console.log(sql);
     pool.query(sql, (err, res) => {
       if (err) {
         return reject(err);

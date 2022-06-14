@@ -20,7 +20,6 @@ Category.caseGetProductbyCategory = (idCategory) => {
   return new Promise((resolve, reject) => {
     let sql = `SELECT * FROM product WHERE category = '${idCategory}'`;
     pool.query(sql, (err, res) => {
-      console.log(res.length);
       if (err) {
         return reject(err);
       }

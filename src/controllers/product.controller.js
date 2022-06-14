@@ -17,14 +17,18 @@ export const getProductById = async (req, res) => {
   }
 };
 
-export const getAllProduct = async (req, res) => {
+export const getSearchProduct = async (req, res) => {
   try {
-    const allProduct = await Product.caseGetAllProduct();
-    return res.status(200).json({
-      status: "success",
-      message: `All Product`,
-      data: allProduct,
-    });
+    let name = req.query.name;
+    name = name.replace(/[^a-zA-Z0-9ñÑ]/g, "");
+    if (name){
+      const allProduct = await Product.caseGetSearchProduct(name);
+      return res.status(200).json({
+        status: "success",
+        message: `All Product`,
+        data : allProduct
+      });
+    }
   } catch (error) {
     return res.status(error.code).json({
       status: "error",
