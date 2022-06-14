@@ -7,6 +7,7 @@ import routesProduct from "../routes/product.routes.js";
 
 const app = express();
 
+
 //middleware
 app.use(morgan("dev"));
 app.use(cors());

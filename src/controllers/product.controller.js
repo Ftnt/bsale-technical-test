@@ -16,3 +16,19 @@ export const getProductById = async (req, res) => {
     });
   }
 };
+
+export const getAllProduct = async (req, res) => {
+  try {
+    const allProduct = await Product.caseGetAllProduct();
+    return res.status(200).json({
+      status: "success",
+      message: `All Product`,
+      data: allProduct,
+    });
+  } catch (error) {
+    return res.status(error.code).json({
+      status: "error",
+      ...error,
+    });
+  }
+}
