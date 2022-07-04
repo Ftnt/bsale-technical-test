@@ -37,8 +37,6 @@ _category["default"].caseGetProductbyCategory = function (idCategory) {
     var sql = "SELECT * FROM product WHERE category = '".concat(idCategory, "'");
 
     _db["default"].query(sql, function (err, res) {
-      console.log(res.length);
-
       if (err) {
         return reject(err);
       }

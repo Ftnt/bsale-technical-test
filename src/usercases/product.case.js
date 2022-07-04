@@ -18,8 +18,11 @@ Product.caseGetProduct = (idProduct) => {
 
 Product.caseGetSearchProduct = (name) => {
   return new Promise((resolve, reject) => {
-    let sql = `SELECT * FROM product where name like '%${name}%'`;
-    console.log(sql);
+    let where = "";
+    if (name) {
+      where = `where name like '%${name}%'`;
+    }
+    let sql = `SELECT * FROM product ${where}`;
     pool.query(sql, (err, res) => {
       if (err) {
         return reject(err);
@@ -27,9 +30,9 @@ Product.caseGetSearchProduct = (name) => {
       if (res.length) {
         return resolve(res);
       }
-      return reject({ code: 404, error: "Not found" });
+      return reject({ code: 404, message: "Product not found" });
     });
   });
-}
+};
 
 export default Product;

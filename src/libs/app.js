@@ -18,5 +18,8 @@ app.use(json());
 //routes
 app.use("/api/category", routesCategory);
 app.use("/api/product", routesProduct);
+// app.use('/',(req,res)=>{
+//     res.send('Hello World');
+// })
 
 export default app;

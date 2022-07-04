@@ -19,9 +19,32 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
+var imgCategory = [{
+  id: "1",
+  img: "https://i.ibb.co/6NN6N5Z/1.png"
+}, {
+  id: "2",
+  img: "https://i.ibb.co/JjLBfr1/2.png"
+}, {
+  id: "3",
+  img: "https://i.ibb.co/7np4TZs/3.png"
+}, {
+  id: "4",
+  img: "https://i.ibb.co/nDfSNgC/4.png"
+}, {
+  id: "5",
+  img: "https://i.ibb.co/2qjptr9/5.png"
+}, {
+  id: "6",
+  img: "https://i.ibb.co/HDmkwXp/6.png"
+}, {
+  id: "7",
+  img: "https://i.ibb.co/HKW9mcZ/7.png"
+}];
+
 var getAllCategory = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var allCategory;
+    var allCategory, datas;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -32,25 +55,32 @@ var getAllCategory = /*#__PURE__*/function () {
 
           case 3:
             allCategory = _context.sent;
+            datas = allCategory === null || allCategory === void 0 ? void 0 : allCategory.map(function (dato) {
+              return _objectSpread(_objectSpread({}, dato), {}, {
+                img: imgCategory.find(function (img) {
+                  return img.id === String(dato.id);
+                }).img
+              });
+            });
             return _context.abrupt("return", res.status(200).json({
               status: "success",
               message: "All Category",
-              data: allCategory
+              data: datas
             }));
 
-          case 7:
-            _context.prev = 7;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             return _context.abrupt("return", res.status(_context.t0.code).json(_objectSpread({
               status: "error"
             }, _context.t0)));
 
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function getAllCategory(_x, _x2) {

@@ -20,19 +20,22 @@ export const getProductById = async (req, res) => {
 export const getSearchProduct = async (req, res) => {
   try {
     let name = req.query.name;
-    name = name.replace(/[^a-zA-Z0-9ñÑ]/g, "");
-    if (name){
-      const allProduct = await Product.caseGetSearchProduct(name);
-      return res.status(200).json({
-        status: "success",
-        message: `All Product`,
-        data : allProduct
-      });
-    }
+    name ? (name = name.replace(/[^a-zA-Z0-9ñÑ]/g, "")) : (name = "");
+    const allProduct = await Product.caseGetSearchProduct(name);
+    const countProduct = allProduct.length;
+    return res.status(200).json({
+      status: "success",
+      message: "Product list",
+      description: {
+        quantity: countProduct,
+        product: name ? name : `All product`,
+      },
+      data: allProduct,
+    });
   } catch (error) {
     return res.status(error.code).json({
       status: "error",
       ...error,
     });
   }
-}
+};

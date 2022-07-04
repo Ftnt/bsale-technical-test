@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getProductById = void 0;
+exports.getSearchProduct = exports.getProductById = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -60,3 +60,56 @@ var getProductById = /*#__PURE__*/function () {
 }();
 
 exports.getProductById = getProductById;
+
+var getSearchProduct = /*#__PURE__*/function () {
+  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
+    var name, allProduct;
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            name = req.query.name;
+            name = name.replace(/[^a-zA-Z0-9ñÑ]/g, "");
+
+            if (!name) {
+              _context2.next = 8;
+              break;
+            }
+
+            _context2.next = 6;
+            return _productCase["default"].caseGetSearchProduct(name);
+
+          case 6:
+            allProduct = _context2.sent;
+            return _context2.abrupt("return", res.status(200).json({
+              status: "success",
+              message: "All Product",
+              data: allProduct
+            }));
+
+          case 8:
+            _context2.next = 13;
+            break;
+
+          case 10:
+            _context2.prev = 10;
+            _context2.t0 = _context2["catch"](0);
+            return _context2.abrupt("return", res.status(_context2.t0.code).json(_objectSpread({
+              status: "error"
+            }, _context2.t0)));
+
+          case 13:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 10]]);
+  }));
+
+  return function getSearchProduct(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.getSearchProduct = getSearchProduct;

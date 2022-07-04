@@ -32,5 +32,27 @@ _productModel["default"].caseGetProduct = function (idProduct) {
   });
 };
 
+_productModel["default"].caseGetSearchProduct = function (name) {
+  return new Promise(function (resolve, reject) {
+    var sql = "SELECT * FROM product where name like '%".concat(name, "%'");
+    console.log(sql);
+
+    _db["default"].query(sql, function (err, res) {
+      if (err) {
+        return reject(err);
+      }
+
+      if (res.length) {
+        return resolve(res);
+      }
+
+      return reject({
+        code: 404,
+        error: "Not found"
+      });
+    });
+  });
+};
+
 var _default = _productModel["default"];
 exports["default"] = _default;

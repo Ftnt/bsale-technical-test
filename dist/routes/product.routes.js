@@ -10,6 +10,7 @@ var _express = require("express");
 var _productController = require("../controllers/product.controller.js");
 
 var routes = (0, _express.Router)();
+routes.get("/", _productController.getSearchProduct);
 routes.get("/:id", _productController.getProductById);
 var _default = routes;
 exports["default"] = _default;
